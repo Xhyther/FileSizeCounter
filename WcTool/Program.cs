@@ -24,23 +24,27 @@ class Program
         
         rootCommand.SetHandler((option, file) =>
         {
-            if (!file.Exists)
-            { 
-                Console.WriteLine("File not found.");
-            }
-            else
+            if (option)
             {
-                try
-                {
-                    long fileSize = new FileInfo(file.FullName).Length;
-                    Console.WriteLine($"{fileSize}, {file}");
+                if (!file.Exists)
+                { 
+                    Console.WriteLine("File not found.");
                 }
-                catch (Exception e)
+                else
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    try
+                    {
+                        long fileSize = new FileInfo(file.FullName).Length;
+                        Console.WriteLine($"{fileSize}, {file}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
                 }
             }
+            
            
         }, byteCounter, fileArgument);
         
