@@ -71,7 +71,7 @@ class Program
                     try
                     {
                         int totalLines = FileLineCounter(new FileInfo(file.FullName));
-                        Console.WriteLine($"{totalLines}, {file}");
+                        Console.WriteLine($"   {totalLines}, {file}");
                     }
                     catch (Exception e)
                     {
@@ -85,7 +85,39 @@ class Program
                     try
                     {
                         int totalWords = WordCounter(new FileInfo(file.FullName));
-                        Console.WriteLine($"{totalWords}, {file}");
+                        Console.WriteLine($"   {totalWords}, {file}");
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+
+                if (moption)
+                {
+                    try
+                    {
+                        int totalCharacters = CharacterCounter(new FileInfo(file.FullName));
+                        Console.WriteLine($"   {totalCharacters}, {file}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+
+                if (!boption &&!loption && !woption && !moption)
+                {
+                    try
+                    {
+                        
+                        int totalLines = FileLineCounter(new FileInfo(file.FullName));
+                        int totalWords = WordCounter(new FileInfo(file.FullName));
+                        int totalCharacters = CharacterCounter(new FileInfo(file.FullName));
+                        Console.WriteLine($"   {totalLines} {totalWords} {totalCharacters} {file}");
                         
                     }
                     catch (Exception e)
@@ -151,6 +183,31 @@ class Program
             throw;
         }
 
+        return counter;
+    }
+
+    private static int CharacterCounter(FileInfo file)
+    {
+        int counter = 0;
+        try
+        {
+            using var reader = new StreamReader(file.FullName);
+            string? line;
+            
+     
+            while ((line = reader.ReadLine()) != null)
+            {
+               counter += line.Length;
+               counter++;
+            }
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
         return counter;
     }
 
