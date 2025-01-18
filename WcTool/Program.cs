@@ -36,7 +36,7 @@ class Program
         rootCommand.Add(wordCounter);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((boption, loption, file) =>
+        rootCommand.SetHandler((boption, loption, woption, file) =>
         {
           
             if (!file.Exists)
@@ -72,13 +72,28 @@ class Program
                         throw;
                     }
                 }
+
+                if (woption)
+                {
+                    try
+                    {
+                        int totalWords = WordCounter(new FileInfo(file.FullName));
+                        Console.WriteLine($"{totalWords}, {file}");
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
                 
             }
             
             
             
            
-        }, byteCounter, lineCounter, fileArgument);
+        }, byteCounter, lineCounter, wordCounter, fileArgument);
         
         await rootCommand.InvokeAsync(args);
     }
@@ -106,4 +121,28 @@ class Program
         return lineCounter;
        
     }
+
+    private static int WordCounter(FileInfo file)
+    {
+        int counter = 0;
+
+        try
+        {
+            using var reader = new StreamReader(file.FullName);
+            string? line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                counter += line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error reading file: {e.Message}");
+            throw;
+        }
+
+        return counter;
+    }
+
 }
