@@ -19,6 +19,12 @@ class Program
                 description: "Counts the number of lines in the file."
             );
 
+        var wordCounter = new Option<bool>
+            (
+                aliases: new[] {"-w"},
+                description: "Counts the total number of words in the file."
+            );
+
         var fileArgument = new Argument<FileInfo>
         (
             name: "file",
@@ -27,6 +33,7 @@ class Program
         
         rootCommand.Add(byteCounter);
         rootCommand.Add(lineCounter);
+        rootCommand.Add(wordCounter);
         rootCommand.Add(fileArgument);
         
         rootCommand.SetHandler((boption, loption, file) =>
