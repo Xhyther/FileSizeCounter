@@ -29,7 +29,7 @@ class Program
         rootCommand.Add(lineCounter);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((Boption, Loption, file) =>
+        rootCommand.SetHandler((boption, loption, file) =>
         {
           
             if (!file.Exists)
@@ -38,7 +38,7 @@ class Program
             }
             else
             {
-                if (Boption)
+                if (boption)
                 {
                     try
                     {
@@ -52,7 +52,7 @@ class Program
                     }
                 }
 
-                if (Loption)
+                if (loption)
                 {
                     try
                     {
@@ -78,16 +78,14 @@ class Program
     
     private static int FileLineCounter(FileInfo file)
     {
-        int LineCounter = 0;
+        int lineCounter = 0;
         try
         {
             using (StreamReader reader = new StreamReader(file.FullName))
             {
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
+                while ((reader.ReadLine()) != null)
                 {
-                    LineCounter++;
+                    lineCounter++;
                 }
             }
             
@@ -98,7 +96,7 @@ class Program
             throw;
         }
         
-        return LineCounter;
+        return lineCounter;
        
     }
 }
