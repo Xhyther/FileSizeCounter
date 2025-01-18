@@ -25,6 +25,12 @@ class Program
                 description: "Counts the total number of words in the file."
             );
 
+        var characterCounter = new Option<bool>
+            (
+                aliases: new[] { "-m" },
+                description: "Counts the total characters in the file."
+            );
+
         var fileArgument = new Argument<FileInfo>
         (
             name: "file",
@@ -34,9 +40,10 @@ class Program
         rootCommand.Add(byteCounter);
         rootCommand.Add(lineCounter);
         rootCommand.Add(wordCounter);
+        rootCommand.Add(characterCounter);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((boption, loption, woption, file) =>
+        rootCommand.SetHandler((boption, loption, woption, moption, file) =>
         {
           
             if (!file.Exists)
@@ -88,12 +95,14 @@ class Program
                     }
                 }
                 
+                
+                
             }
             
             
             
            
-        }, byteCounter, lineCounter, wordCounter, fileArgument);
+        }, byteCounter, lineCounter, wordCounter, characterCounter, fileArgument);
         
         await rootCommand.InvokeAsync(args);
     }
