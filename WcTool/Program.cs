@@ -29,15 +29,16 @@ class Program
         rootCommand.Add(lineCounter);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((option, file) =>
+        rootCommand.SetHandler((Boption, Loption, file) =>
         {
-            if (option)
+          
+            if (!file.Exists)
+            { 
+                Console.WriteLine("File not found.");
+            }
+            else
             {
-                if (!file.Exists)
-                { 
-                    Console.WriteLine("File not found.");
-                }
-                else
+                if (Boption)
                 {
                     try
                     {
@@ -50,16 +51,32 @@ class Program
                         throw;
                     }
                 }
+
+                if (Loption)
+                {
+                    try
+                    {
+                        int totalLines = FileLineCounter(new FileInfo(file.FullName));
+                        Console.WriteLine($"{totalLines}, {file}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+                
             }
             
             
+            
            
-        }, byteCounter, fileArgument);
+        }, byteCounter, lineCounter, fileArgument);
         
         await rootCommand.InvokeAsync(args);
     }
     
-    public int FileLineCounter(FileInfo file)
+    private static int FileLineCounter(FileInfo file)
     {
         int LineCounter = 0;
         try
