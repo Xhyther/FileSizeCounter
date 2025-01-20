@@ -31,6 +31,12 @@ class Program
                 description: "Counts the total characters in the file."
             );
 
+        var infoOption = new Option<bool>
+            (
+                aliases: new[] {"-i", "--info"},
+                description: "Shows the basic information about the file."
+            );
+
         var fileArgument = new Argument<FileInfo>
         (
             name: "file",
