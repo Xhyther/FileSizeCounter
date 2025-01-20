@@ -127,7 +127,7 @@ class Program
                        
                        //finding the type of the file
                        string[] WType = fileName.Split(".");
-                       string type = WType[0];
+                       string type = WType[1];
                        
                        //Finding the file path
                        string[] findPath = file.FullName.Split(fileName);
@@ -137,7 +137,7 @@ class Program
                        long fileSize = new FileInfo(file.FullName).Length;
                        
                        Console.WriteLine($"   Name: {fileName}");
-                       Console.WriteLine($"   Type: {type}");
+                       Console.WriteLine($"   Type: .{type}");
                        Console.WriteLine($"   Location: {Path}");
                        Console.WriteLine($"   Size: {fileSize/1000} KB ({fileSize} bytes)");
                        Console.WriteLine();
