@@ -47,6 +47,7 @@ class Program
         rootCommand.Add(lineCounter);
         rootCommand.Add(wordCounter);
         rootCommand.Add(characterCounter);
+        rootCommand.Add(infoOption);
         rootCommand.Add(fileArgument);
         
         rootCommand.SetHandler((boption, loption, woption, moption, file) =>
