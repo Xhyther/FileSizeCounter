@@ -120,7 +120,10 @@ class Program
                 {
                     try
                     {
-                       
+                       string[] fileFullname = file.FullName.Split("/");
+                       int lastIndex = fileFullname.Length - 1;
+                       string fileName = fileFullname[lastIndex];
+                       Console.WriteLine($"   {fileName}, {file}");
                     }
                     catch (Exception e)
                     {
@@ -129,7 +132,7 @@ class Program
                     }
                 }
 
-                if (!boption &&!loption && !woption && !moption && infoOptionValue)
+                if (!boption &&!loption && !woption && !moption && !infoOptionValue)
                 {
                     try
                     {
