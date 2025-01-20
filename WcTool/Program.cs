@@ -40,7 +40,7 @@ class Program
         var fileArgument = new Argument<FileInfo>
         (
             name: "file",
-            description: "The file to read from."
+            description: "The file / filepath to read from."
         ){Arity = ArgumentArity.ExactlyOne};
         
         rootCommand.Add(byteCounter);
