@@ -120,10 +120,29 @@ class Program
                 {
                     try
                     {
+                        //Finding the name of the file
                        string[] fileFullname = file.FullName.Split("/");
                        int lastIndex = fileFullname.Length - 1;
                        string fileName = fileFullname[lastIndex];
-                       Console.WriteLine($"   {fileName}, {file}");
+                       
+                       //finding the type of the file
+                       string[] WType = fileName.Split(".");
+                       string type = WType[0];
+                       
+                       //Finding the file path
+                       string[] findPath = file.FullName.Split(fileName);
+                       string Path = findPath[0];
+                       
+                       //Finding the size of the file
+                       long fileSize = new FileInfo(file.FullName).Length;
+                       
+                       Console.WriteLine($"   Name: {fileName}");
+                       Console.WriteLine($"   Type: {type}");
+                       Console.WriteLine($"   Location: {Path}");
+                       Console.WriteLine($"   Size: {fileSize/1000} KB ({fileSize} bytes)");
+                       Console.WriteLine();
+                       
+                       
                     }
                     catch (Exception e)
                     {
@@ -141,6 +160,7 @@ class Program
                         int totalWords = WordCounter(new FileInfo(file.FullName));
                         int totalCharacters = CharacterCounter(new FileInfo(file.FullName));
                         Console.WriteLine($"   {totalLines} {totalWords} {totalCharacters} {file}");
+                       
                         
                     }
                     catch (Exception e)
