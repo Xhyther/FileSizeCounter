@@ -145,7 +145,7 @@ class Program
                        Console.WriteLine($"   Location: {path}");
                        Console.WriteLine($"   Size: {fileSize/1000} KB ({fileSize} bytes)");
                        Console.WriteLine();
-                       
+                       Console.WriteLine($"   Creation Time: {creationTime}");
                        
                     }
                     catch (Exception e)
