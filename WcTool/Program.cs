@@ -138,7 +138,8 @@ class Program
                        
                        //Getting the time of creation of the file
                        DateTime creationTime = File.GetCreationTime(file.FullName);
-                       //
+                       //Getting the last access time of the file
+                       DateTime lastWriteTime = File.GetLastWriteTime(file.FullName);
                        
                        Console.WriteLine($"   Name: {fileName}");
                        Console.WriteLine($"   Type: .{type}");
