@@ -37,6 +37,12 @@ class Program
                 description: "Shows the basic information and properties of the file. "
             );
 
+        var openFileoption = new Option<bool>
+        (
+            aliases: new[] { "-o", "--open-File" },
+            description: "Opens the file using the console."
+        );
+        
         var fileArgument = new Argument<FileInfo>
         (
             name: "file",
@@ -48,6 +54,7 @@ class Program
         rootCommand.Add(wordCounter);
         rootCommand.Add(characterCounter);
         rootCommand.Add(infoOption);
+        rootCommand.Add(openFileoption);
         rootCommand.Add(fileArgument);
         
         rootCommand.SetHandler((bOption, lOption, wOption, mOption, infoOptionValue, file) =>
