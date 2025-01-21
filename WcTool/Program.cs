@@ -34,7 +34,7 @@ class Program
         var infoOption = new Option<bool>
             (
                 aliases: new[] {"-i", "--info"},
-                description: "Shows the basic information about the file."
+                description: "Shows the basic information and properties of the file. "
             );
 
         var fileArgument = new Argument<FileInfo>
@@ -139,7 +139,10 @@ class Program
                        //Getting the time of creation of the file
                        DateTime creationTime = File.GetCreationTime(file.FullName);
                        //Getting the last access time of the file
+                       DateTime lastAccessTime = File.GetLastAccessTime(file.FullName);
+                       //Getting the last writeTime of the file
                        DateTime lastWriteTime = File.GetLastWriteTime(file.FullName);
+                       
                        
                        Console.WriteLine($"   Name: {fileName}");
                        Console.WriteLine($"   Type: .{type}");
@@ -147,7 +150,8 @@ class Program
                        Console.WriteLine($"   Size: {fileSize/1000} KB ({fileSize} bytes)");
                        Console.WriteLine();
                        Console.WriteLine($"   Creation Time: {creationTime}");
-                       
+                       Console.WriteLine($"   Last Access: {lastAccessTime}");
+                       Console.WriteLine($"   Last Write Time: {lastWriteTime}");
                     }
                     catch (Exception e)
                     {
