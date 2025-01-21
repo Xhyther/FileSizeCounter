@@ -136,6 +136,10 @@ class Program
                        //Finding the size of the file
                        long fileSize = new FileInfo(file.FullName).Length;
                        
+                       //Getting the time of creation of the file
+                       DateTime creationTime = File.GetCreationTime(file.FullName);
+                       //
+                       
                        Console.WriteLine($"   Name: {fileName}");
                        Console.WriteLine($"   Type: .{type}");
                        Console.WriteLine($"   Location: {path}");
