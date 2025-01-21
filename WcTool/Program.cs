@@ -50,7 +50,7 @@ class Program
         rootCommand.Add(infoOption);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((boption, loption, woption, moption, infoOptionValue, file) =>
+        rootCommand.SetHandler((bOption, lOption, wOption, mOption, infoOptionValue, file) =>
         {
           
             if (!file.Exists)
@@ -59,7 +59,7 @@ class Program
             }
             else
             {
-                if (boption)
+                if (bOption)
                 {
                     try
                     {
@@ -73,7 +73,7 @@ class Program
                     }
                 }
 
-                if (loption)
+                if (lOption)
                 {
                     try
                     {
@@ -87,7 +87,7 @@ class Program
                     }
                 }
 
-                if (woption)
+                if (wOption)
                 {
                     try
                     {
@@ -102,7 +102,7 @@ class Program
                     }
                 }
 
-                if (moption)
+                if (mOption)
                 {
                     try
                     {
@@ -126,19 +126,19 @@ class Program
                        string fileName = fileFullname[lastIndex];
                        
                        //finding the type of the file
-                       string[] WType = fileName.Split(".");
-                       string type = WType[1];
+                       string[] wType = fileName.Split(".");
+                       string type = wType[1];
                        
                        //Finding the file path
                        string[] findPath = file.FullName.Split(fileName);
-                       string Path = findPath[0];
+                       string path = findPath[0];
                        
                        //Finding the size of the file
                        long fileSize = new FileInfo(file.FullName).Length;
                        
                        Console.WriteLine($"   Name: {fileName}");
                        Console.WriteLine($"   Type: .{type}");
-                       Console.WriteLine($"   Location: {Path}");
+                       Console.WriteLine($"   Location: {path}");
                        Console.WriteLine($"   Size: {fileSize/1000} KB ({fileSize} bytes)");
                        Console.WriteLine();
                        
@@ -151,7 +151,7 @@ class Program
                     }
                 }
 
-                if (!boption &&!loption && !woption && !moption && !infoOptionValue)
+                if (!bOption &&!lOption && !wOption && !mOption && !infoOptionValue)
                 {
                     try
                     {
