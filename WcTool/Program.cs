@@ -1,5 +1,5 @@
 ﻿using System.CommandLine;
-using System.Diagnostics;
+
 
 namespace WcTool;
 
@@ -37,12 +37,6 @@ class Program
                 aliases: new[] {"-i", "--info"},
                 description: "Shows the basic information and properties of the file. "
             );
-
-        var openFileoption = new Option<bool>
-        (
-            aliases: new[] { "-o", "--open-File" },
-            description: "Opens the file using the console."
-        );
         
         var fileArgument = new Argument<FileInfo>
         (
@@ -55,10 +49,9 @@ class Program
         rootCommand.Add(wordCounter);
         rootCommand.Add(characterCounter);
         rootCommand.Add(infoOption);
-        rootCommand.Add(openFileoption);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((bOption, lOption, wOption, mOption, infoOptionValue, openOption, file) =>
+        rootCommand.SetHandler((bOption, lOption, wOption, mOption, infoOptionValue, file) =>
         {
           
             if (!file.Exists)
@@ -168,47 +161,8 @@ class Program
                     }
                 }
 
-                if (openOption)
-                {
-                    try
-                    {
-                        //Finding the name of the file
-                        string[] fileFullname = file.FullName.Split("/");
-                        int lastIndex = fileFullname.Length - 1;
-                        string fileName = fileFullname[lastIndex];
-                       
-                        //finding the type of the file
-                        string[] wType = fileName.Split(".");
-                        string type = wType[1];
-
-                        using Process myProcess = new Process();
-
-                        if (type == ".txt")
-                        {
-                            try
-                            {
-                                Console.WriteLine($"   Attempting to execute {fileName}");
-                                myProcess.StartInfo.FileName = "notepad.exe";
-                                myProcess.StartInfo.Arguments = file.FullName;
-                                myProcess.StartInfo.UseShellExecute = true;
-                                myProcess.Start();
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine(e);
-                            }
-                        }
-                       //Add another one here for pdf
-                       //add
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        throw;
-                    }
-                }
-
-                if (!bOption &&!lOption && !wOption && !mOption && !infoOptionValue && !openOption)
+                
+                if (!bOption &&!lOption && !wOption && !mOption && !infoOptionValue)
                 {
                     try
                     {
@@ -234,7 +188,7 @@ class Program
             
             
            
-        }, byteCounter, lineCounter, wordCounter, characterCounter, infoOption, openFileoption, fileArgument);
+        }, byteCounter, lineCounter, wordCounter, characterCounter, infoOption,  fileArgument);
         
         await rootCommand.InvokeAsync(args);
     }
