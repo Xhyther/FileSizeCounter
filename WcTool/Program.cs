@@ -187,6 +187,7 @@ class Program
                         {
                             try
                             {
+                                Console.WriteLine($"   Attempting to execute {fileName}");
                                 myProcess.StartInfo.FileName = "notepad.exe";
                                 myProcess.StartInfo.Arguments = file.FullName;
                                 myProcess.StartInfo.UseShellExecute = true;
@@ -196,9 +197,9 @@ class Program
                             {
                                 Console.WriteLine(e);
                             }
-                            
-                           
                         }
+                       //Add another one here for pdf
+                       //add
                     }
                     catch (Exception e)
                     {
