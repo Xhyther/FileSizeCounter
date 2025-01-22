@@ -182,6 +182,23 @@ class Program
                         string type = wType[1];
 
                         using Process myProcess = new Process();
+
+                        if (type == ".txt")
+                        {
+                            try
+                            {
+                                myProcess.StartInfo.FileName = "notepad.exe";
+                                myProcess.StartInfo.Arguments = file.FullName;
+                                myProcess.StartInfo.UseShellExecute = true;
+                                myProcess.Start();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                            
+                           
+                        }
                     }
                     catch (Exception e)
                     {
