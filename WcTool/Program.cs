@@ -1,4 +1,5 @@
 ﻿using System.CommandLine;
+using System.Diagnostics;
 
 namespace WcTool;
 
@@ -171,7 +172,16 @@ class Program
                 {
                     try
                     {
-                        
+                        //Finding the name of the file
+                        string[] fileFullname = file.FullName.Split("/");
+                        int lastIndex = fileFullname.Length - 1;
+                        string fileName = fileFullname[lastIndex];
+                       
+                        //finding the type of the file
+                        string[] wType = fileName.Split(".");
+                        string type = wType[1];
+
+                        using Process myProcess = new Process();
                     }
                     catch (Exception e)
                     {
@@ -282,5 +292,5 @@ class Program
         
         return counter;
     }
-
+    
 }
