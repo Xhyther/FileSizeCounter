@@ -57,7 +57,7 @@ class Program
         rootCommand.Add(openFileoption);
         rootCommand.Add(fileArgument);
         
-        rootCommand.SetHandler((bOption, lOption, wOption, mOption, infoOptionValue, file) =>
+        rootCommand.SetHandler((bOption, lOption, wOption, mOption, infoOptionValue, openOption, file) =>
         {
           
             if (!file.Exists)
@@ -167,7 +167,20 @@ class Program
                     }
                 }
 
-                if (!bOption &&!lOption && !wOption && !mOption && !infoOptionValue)
+                if (openOption)
+                {
+                    try
+                    {
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+
+                if (!bOption &&!lOption && !wOption && !mOption && !infoOptionValue && !openOption)
                 {
                     try
                     {
@@ -193,7 +206,7 @@ class Program
             
             
            
-        }, byteCounter, lineCounter, wordCounter, characterCounter, infoOption, fileArgument);
+        }, byteCounter, lineCounter, wordCounter, characterCounter, infoOption, openFileoption, fileArgument);
         
         await rootCommand.InvokeAsync(args);
     }
