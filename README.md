@@ -11,12 +11,12 @@
 ## Usage
 
 ```bash
-WcTool <file> [options]
+ccwc <file> [options]
 ```
 or
 
 ```bash
-WcTool [options] <file>
+ccwc [options] <file>
 ```
 
 ### Arguments
@@ -39,22 +39,22 @@ WcTool [options] <file>
 
 1. **Count lines in a file:**
    ```bash
-   WcTool sample.txt -l
+   ccwc sample.txt -l
    ```
 
 2. **Count words in a file:**
    ```bash
-   WcTool sample.txt -w
+   ccwc sample.txt -w
    ```
 
 3. **Display basic file information:**
    ```bash
-   WcTool sample.txt -i
+   ccwc sample.txt -i
    ```
 
 4. **Count bytes, lines, words, and characters simultaneously:**
    ```bash
-   WcTool sample.txt
+   ccwc sample.txt
    ```
 
 ## Installation
