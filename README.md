@@ -61,7 +61,7 @@ WcTool [options] <file>
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/WcTool.git
+   git clone https://github.com/Xhyther/WCTOOL.git
    ```
 2. Build the project:
    - Open the solution file in Visual Studio or your preferred IDE.
