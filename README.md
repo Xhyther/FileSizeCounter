@@ -12,6 +12,7 @@
 
 ```bash
 WcTool <file> [options]
+WcTool [options] <file>
 ```
 
 ### Arguments
