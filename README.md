@@ -12,6 +12,10 @@
 
 ```bash
 WcTool <file> [options]
+```
+or
+
+```bash
 WcTool [options] <file>
 ```
 
