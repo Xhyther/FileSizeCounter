@@ -41,18 +41,30 @@ ccwc [options] <file>
    ```bash
    ccwc sample.txt -l
    ```
+   or
+    ```bash
+   ccwc -l sample.txt 
+   ```
 
-2. **Count words in a file:**
+3. **Count words in a file:**
    ```bash
    ccwc sample.txt -w
    ```
+   or
+   ```bash
+   ccwc -w sample.txt 
+   ``` 
 
-3. **Display basic file information:**
+5. **Display basic file information:**
    ```bash
    ccwc sample.txt -i
    ```
+   or
+    ```bash
+   ccwc -i sample.txt 
+   ```
 
-4. **Count bytes, lines, words, and characters simultaneously:**
+7. **Count bytes, lines, words, and characters simultaneously:**
    ```bash
    ccwc sample.txt
    ```
