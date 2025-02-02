@@ -90,6 +90,9 @@ WcTool leverages the **System.CommandLine** library for parsing commands and opt
 - .NET 6.0 or later
 - Windows, Linux, or macOS
 
+## Current Version
+- version 1.0
+  
 ## Contributing
 
 Contributions are welcome! Feel free to submit a pull request or open an issue for suggestions and improvements.
